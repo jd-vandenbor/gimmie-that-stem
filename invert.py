@@ -26,18 +26,20 @@ if wantStopwords == "y" or "Y":
         rText.replace(stopWord, "")
     f2.close()
 
-#-------------- Take out punctuation / lowercase----------
-reservedWords=[".I", ".T", ".W", ".B", ".A"]
-for word in rText:
-    if word not in reservedWords:
-        word = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|-|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', word).lower()
-
+#-------------- Take out punctuation / lowercase ----------
+reservedWords=[".I", ".T", ".W", ".A", ".K", ".C", ".N", ".X", ".B"]
+# temp=""
+# for word in rText:
+#     if word not in reservedWords:
+#         word = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|-|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', word).lower()
+#     temp += word
+# rText = temp
 
 # 1.1
 #-------------------- create list of document objects -----------------------
 
 #split file into documents by delimeter '.I'
-docs = rText.split('.I')
+docs = rText.split('.I ')
 
 
 for doc in docs:
@@ -68,8 +70,15 @@ for doc in docs:
                     title += nextLine
                 else:
                     run = False
-            print("TITLE: " + title)
-    
+            #print("TITLE: " + title)
+    title = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', title).lower()
+    title = re.sub('-', ' ', title).lower()
+    if wantStopwords == "y" or "Y":
+        f2 = open("stopwords.txt", "r")
+        for stopWord in f2:
+            title.replace(stopWord, "")
+        f2.close()
+
     #---- Get ABSTRACT ----
     abstract =""
     textIO = StringIO.StringIO(allText)
@@ -86,13 +95,20 @@ for doc in docs:
                     abstract += nextLine
                 else:
                     run = False
-            print("ABSTRACT: " + abstract)
+            #print("ABSTRACT: " + abstract)
+    abstract = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', abstract).lower()
+    abstract = re.sub('-', ' ', abstract).lower()
+    if wantStopwords == "y" or "Y":
+        f2 = open("stopwords.txt", "r")
+        for stopWord in f2:
+            abstract.replace(stopWord, "")
+        f2.close()
 
     titleAbstract = title + abstract
         
 
     #create document dictionary initialized with all zero frequency
-    for word in allText.split():
+    for word in titleAbstract.split():
         docFrequency[word.strip()] = 0
         term = TermInfo(word.strip(), 0)
         terms[word.strip()] = term
@@ -106,18 +122,23 @@ for doc in docs:
 
 # 1.2
 #------ for each document get the frequency of all the words in the document----
+ATAA = ""
+f3 = open("docc.txt", "w+")
 for doc in documents:
-    for idx, word in enumerate (doc.allText.split()):
+    f3.write(doc.ID + "\r\n")
+    ATAA += doc.titleAbstract
+    for idx, word in enumerate (doc.titleAbstract.split()):
         if word not in reservedWords:
             doc.docFrequency[word.strip()] += 1
             doc.terms[word.strip()].frequency += 1
             doc.terms[word.strip()].positions.append(idx)
+f3.close()
 
 
 #----------------------- Postings list ------------------------
 #init postingsList
 postingsList={}
-for word in rText.split():
+for word in ATAA.split():
     postingsList[word.strip(string.punctuation)] = []
 
 # Create posting list
@@ -126,7 +147,7 @@ for posting in postingsList:
     docList=[]
     for doc in documents:
         #if the doc has the word append it to the list
-        if posting in doc.allText:
+        if posting in doc.titleAbstract:
             docList.append(doc.ID)
     postingsList[posting] = docList
 
@@ -134,7 +155,8 @@ for posting in postingsList:
 print("PRINTING POSTING LIST ...")
 postingsFile = open("postingsLists.txt", "w+")
 for post in postingsList:
-    postingsFile.write(post+ ": " + str(postingsList[post]) + "\r\n")
+    if (post != ""):
+        postingsFile.write(post+ ": " + str(postingsList[post]) + "\r\n")
     
 # -------------------------------------------------------------------
 
@@ -146,11 +168,11 @@ for post in postingsList:
 #init dictionary 
 print("Creating dictionary ...")
 wordcount={}
-for word in rText.split():
+for word in ATAA.split():
     if word not in reservedWords:
         wordcount[word.strip()] =0
 
-for word in rText.split():
+for word in ATAA.split():
     if word not in reservedWords:
         wordcount[word.strip()] +=1
 
