@@ -2,6 +2,8 @@ import re, string, timeit, StringIO
 import cPickle as pickle
 from DocumentStruct import *
 from TermInfo import *
+from PorterStemmer import *
+
 
 #strip the text of punctuation
 #stext = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|-|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', rawText)
@@ -18,12 +20,14 @@ abstract=""
 documents=[]
 
 # -------------   Stop words  ------------------
-wantStopwords = raw_input("Would you like to omit stopwords? If yes, type Y. Otherwise, type N: ")
+wantStopwordsRemoved = raw_input("Would you like to omit stopwords? If yes, type Y. Otherwise, type N: ")
 wantStemming = raw_input("Would you like to have stemming functionality? If yes, type Y. Otherwise, type N: ")
-if wantStopwords == "y" or "Y":
+if wantStopwordsRemoved == "y":
     f2 = open("stopwords.txt", "r")
     for stopWord in f2:
-        rText.replace(stopWord, "")
+        #rText = rText.replace(stopWord, "")
+        rText = re.sub(r"\b%s\b" % stopWord , "", rText)
+
     f2.close()
 
 #-------------- Take out punctuation / lowercase ----------
@@ -71,19 +75,43 @@ for doc in docs:
                 else:
                     run = False
             #print("TITLE: " + title)
+    # take out punctuation
     title = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', title).lower()
     title = re.sub('-', ' ', title).lower()
-    if wantStopwords == "y" or "Y":
+    # take out stopwords
+    # if wantStopwordsRemoved == "y":
+    #     f2 = open("stopwords.txt", "r")
+    #     for stopWord in f2:
+    #         #title = title.replace(stopWord.strip(), "")
+    #         title = re.sub(r"%s" % stopWord , "", title)
+    #     f2.close()
+    if wantStopwordsRemoved == "y":
         f2 = open("stopwords.txt", "r")
-        for stopWord in f2:
-            title.replace(stopWord, "")
-        f2.close()
+        stopwordsArray=[]
+        for word in f2:
+            stopwordsArray.append(word.strip())
+        temp = ""
+        for word in title.split():
+            if word not in stopwordsArray:
+                temp += word + " "
+        title = temp
+
+    #stem it
+    if wantStemming == "y":
+        p = PorterStemmer()
+        output=""
+        for word in title.split():
+            output += p.stem(word, 0,len(word)-1) + " "
+            #print(output)
+        title = output
+    
+    
 
     #---- Get ABSTRACT ----
     abstract =""
     textIO = StringIO.StringIO(allText)
     for line in textIO:
-        if line.startswith(".A"):
+        if line.startswith(".W"):
             run = True
             abstract=""
             while(run):
@@ -96,14 +124,45 @@ for doc in docs:
                 else:
                     run = False
             #print("ABSTRACT: " + abstract)
+    # take out punctuation
     abstract = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', abstract).lower()
     abstract = re.sub('-', ' ', abstract).lower()
-    if wantStopwords == "y" or "Y":
+    # take out stopwords
+    # if wantStopwordsRemoved == "y":
+    #     f2 = open("stopwords.txt", "r")
+    #     for stopWord in f2:
+    #         #abstract = abstract.replace(stopWord.strip(), "")
+    #         abstract = re.sub(r"%s" % stopWord , "", abstract)
+    if wantStopwordsRemoved == "y":
         f2 = open("stopwords.txt", "r")
-        for stopWord in f2:
-            abstract.replace(stopWord, "")
+        stopwordsArray=[]
+        for word in f2:
+            stopwordsArray.append(word.strip())
+        temp = ""
+        for word in abstract.split():
+            if word not in stopwordsArray:
+                temp += word + " "
+        abstract = temp
         f2.close()
 
+    print(abstract)
+    
+        
+
+
+    #stem it DOG!
+    if wantStemming == "y":
+        p = PorterStemmer()
+        output=""
+        for word in abstract.split():
+            output += p.stem(word, 0,len(word)-1) + " "
+            #print(output)
+        abstract = output
+
+
+
+
+    #combine title and abstract
     titleAbstract = title + abstract
         
 
@@ -147,7 +206,7 @@ for posting in postingsList:
     docList=[]
     for doc in documents:
         #if the doc has the word append it to the list
-        if posting in doc.titleAbstract:
+        if posting in doc.terms.keys():
             docList.append(doc.ID)
     postingsList[posting] = docList
 
@@ -185,4 +244,3 @@ for key in sorted(wordcount.keys()) :
     #print(key , " :: " , wordcount[key])
 dicFile.close
 # -----------------------------------------------------------
-
