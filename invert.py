@@ -1,7 +1,6 @@
 import re, string, timeit, StringIO
 import cPickle as pickle
 from DocumentStruct import *
-from TermInfo import *
 from PorterStemmer import *
 
 
@@ -15,8 +14,8 @@ documents=[]
 reservedWords=[".I", ".T", ".W", ".A", ".K", ".C", ".N", ".X", ".B"]
 
 # -------------   Stop words  ------------------
-wantStopwordsRemoved = raw_input("Would you like to omit stopwords? If yes, type Y. Otherwise, type N: ")
-wantStemming = raw_input("Would you like to have stemming functionality? If yes, type Y. Otherwise, type N: ")
+wantStopwordsRemoved = raw_input("Would you like to omit stopwords? If yes, type y. Otherwise, type n: ")
+wantStemming = raw_input("Would you like to have stemming functionality? If yes, type y. Otherwise, type n: ")
 if wantStopwordsRemoved == "y":
     f2 = open("stopwords.txt", "r")
     for stopWord in f2:
@@ -35,7 +34,6 @@ for doc in docs:
     #---init variables-- 
     allText = doc
     docFrequency={}
-    terms={}
 
     #---- Get ID ----
     try:
@@ -140,11 +138,9 @@ for doc in docs:
     #create doc frequency dictionary initialized with all zero frequency
     for word in titleAbstract.split():
         docFrequency[word.strip()] = 0
-        term = TermInfo(word.strip(), 0)
-        terms[word.strip()] = term
     
     #document with text and initialized (all zero) dictionary of words
-    document = DocumentStruct(allText, terms, docFrequency, ID, title, abstract, titleAbstract, {})
+    document = DocumentStruct(allText, docFrequency, ID, title, abstract, titleAbstract, {})
     documents.append(document)
 
 # ---------------------------------------------------------------------
@@ -170,7 +166,6 @@ for doc in documents:
         #doc.positions["accelerating"].append(0)
         if word not in reservedWords:
             doc.docFrequency[word.strip()] += 1
-            doc.terms[word.strip()].frequency += 1
 
 
 
@@ -187,7 +182,7 @@ for posting in postingsList:
     docList=[]
     for doc in documents:
         #if the doc has the word append it to the list
-        if posting in doc.terms.keys():
+        if posting in doc.docFrequency.keys():
             docList.append(doc)
     postingsList[posting] = docList
 
