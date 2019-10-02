@@ -1,4 +1,5 @@
 import invert, DocumentStruct, timeit
+from PorterStemmer import *
 
 documents = invert.documents
 postingsList = invert.postingsList
@@ -7,17 +8,23 @@ userInput = ""
 start = 0
 times=[]
 while userInput != "ZZEND":
+    print(" ")
     userInput = raw_input("Please type in a sign term to test: ")
     userInput = userInput.strip()
+    print(" ")
+    if invert.wantStemming == "y":
+        p = PorterStemmer()
+        userInput = p.stem(userInput, 0,len(userInput)-1)
+        print(" User Input stemmed is: " + userInput)
+
     if userInput in postingsList.keys():
         start = timeit.default_timer()
         for doc in postingsList[userInput]:
             print("Document ID: " + doc.ID) 
             print("Title: " + doc.title) # make original title in DocumentStruct
-                            # possibly stem answer
             print("Frequency: " + str(doc.docFrequency[userInput]))
             print("Positions: " + str(doc.positions[userInput]))
-            #re.search(r"%s" % userInput , doc.titleAbstract)
+            
             lastFive=[]
             result=""
             counter=5
