@@ -145,7 +145,6 @@ for doc in docs:
         abstract = temp
         f2.close()
 
-    print(abstract)
     
         
 
@@ -174,7 +173,8 @@ for doc in docs:
     
 
     #document with text and initialized (all zero) dictionary of words
-    document = DocumentStruct(allText, terms, docFrequency, ID, title, abstract, titleAbstract)
+    
+    document = DocumentStruct(allText, terms, docFrequency, ID, title, abstract, titleAbstract, {})
     documents.append(document)
 
 # ---------------------------------------------------------------------
@@ -183,15 +183,33 @@ for doc in docs:
 #------ for each document get the frequency of all the words in the document----
 ATAA = ""
 f3 = open("docc.txt", "w+")
+
+# init document positions
+for doc in documents:
+    for word in doc.titleAbstract.split():
+        doc.positions[word] = []
+
+# get positions
+for doc in documents:
+    for idx, word in enumerate(doc.titleAbstract.split()):
+        doc.positions[word].append(idx)
+
+
+
 for doc in documents:
     f3.write(doc.ID + "\r\n")
     ATAA += doc.titleAbstract
     for idx, word in enumerate (doc.titleAbstract.split()):
+        #doc.positions["accelerating"].append(0)
         if word not in reservedWords:
             doc.docFrequency[word.strip()] += 1
             doc.terms[word.strip()].frequency += 1
-            doc.terms[word.strip()].positions.append(idx)
 f3.close()
+
+#print(documents[20].positions)
+#print(documents[20].ID)
+#print(documents[20].titleAbstract)
+
 
 
 #----------------------- Postings list ------------------------
@@ -207,16 +225,31 @@ for posting in postingsList:
     for doc in documents:
         #if the doc has the word append it to the list
         if posting in doc.terms.keys():
-            docList.append(doc.ID)
+            docList.append(doc)
     postingsList[posting] = docList
 
 # Print postings list file
 print("PRINTING POSTING LIST ...")
 postingsFile = open("postingsLists.txt", "w+")
+
+print(str(documents[20].ID))
+print(str(documents[20].positions["convergence"]))
+
 for post in postingsList:
     if (post != ""):
-        postingsFile.write(post+ ": " + str(postingsList[post]) + "\r\n")
-    
+        postingsFile.write(post+ ": ")
+        postingsFile.write("\r\n")
+        for d in postingsList[post]:
+            postingsFile.write("[ ID:" + str(d.ID) + " | ")
+            postingsFile.write("Freq:" + str(d.docFrequency[post]) + " | Pos: ")
+            for pos in d.positions[post]:
+                postingsFile.write(str(pos) + ", ")
+
+            postingsFile.write("], ")
+        postingsFile.write("\r\n")
+        postingsFile.write("\r\n")
+
+
 # -------------------------------------------------------------------
 
 
