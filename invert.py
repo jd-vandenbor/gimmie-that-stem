@@ -232,13 +232,11 @@ for posting in postingsList:
 print("PRINTING POSTING LIST ...")
 postingsFile = open("postingsLists.txt", "w+")
 
-print(str(documents[20].ID))
-print(str(documents[20].positions["convergence"]))
 
-for post in postingsList:
+for post in sorted(postingsList.keys()):
     if (post != ""):
         postingsFile.write(post+ ": ")
-        postingsFile.write("\r\n")
+        #postingsFile.write("\r\n")
         for d in postingsList[post]:
             postingsFile.write("[ ID:" + str(d.ID) + " | ")
             postingsFile.write("Freq:" + str(d.docFrequency[post]) + " | Pos: ")
