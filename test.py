@@ -1,22 +1,30 @@
 import invert, DocumentStruct, timeit
 from PorterStemmer import *
 
+#--------- set up ----------
 documents = invert.documents
 postingsList = invert.postingsList
 postingListFile = open("postingsLists.txt", "r")
 userInput = ""
 start = 0
 times=[]
+
+#-------- user input loop -----------
 while userInput != "ZZEND":
     print(" ")
+
+    #get user input
     userInput = raw_input("Please type in a sign term to test: ")
     userInput = userInput.strip()
     print(" ")
-    if invert.wantStemming == "y":
+    #--- stem input if desired ---
+    if invert.wantStemming == "y" and userInput != "ZZEND":
         p = PorterStemmer()
         userInput = p.stem(userInput, 0,len(userInput)-1)
-        print(" User Input stemmed is: " + userInput)
+        print("User Input stemmed is: " + userInput)
+        print(" ")
 
+    #---------- print correlating 
     if userInput in postingsList.keys():
         start = timeit.default_timer()
         for doc in postingsList[userInput]:
@@ -25,10 +33,12 @@ while userInput != "ZZEND":
             print("Frequency: " + str(doc.docFrequency[userInput]))
             print("Positions: " + str(doc.positions[userInput]))
             
+            
             lastFive=[]
             result=""
             counter=5
             found = False
+            
             #print the 10 words surrounding the first match
             for word in doc.titleAbstract.split():
                 if not found:
@@ -49,12 +59,12 @@ while userInput != "ZZEND":
             print("Time: " + str(time))
             print(" ")
             times.append(time)
-    else:
-        print("Sorry that term is not found in our postings list. Perhaps it was stemmed?")       
-    # for line in postingListFile:
-    #     if line.startswith(userInput):
-    #         print(line)
-    postingListFile = open("postingsLists.txt", "r")
 
+    # report to user to enter new term if the search matched nothing
+    elif userInput != "ZZEND":
+        print("Sorry that term is not found in our postings list.")       
+
+# print avverage time
 totalTime = sum(times) / len(times)
-print("Average Time: " + str(totalTime))
+print(" ")
+print("Average Time for search: " + str(totalTime))

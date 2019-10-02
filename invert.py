@@ -5,19 +5,14 @@ from TermInfo import *
 from PorterStemmer import *
 
 
-#strip the text of punctuation
-#stext = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|-|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', rawText)
-
 # ---------- Set up -------------
 print("test")
 f= open("cacm.all","r")
 rText = f.read()
-#rText = "I w!ent. to the, do\"ct#o$+rs %t|&o\da()y. to:d;ay/<~@>=, to^da'y!kjbn"
-
 title=""
 abstract=""
-#noStopWords=""
 documents=[]
+reservedWords=[".I", ".T", ".W", ".A", ".K", ".C", ".N", ".X", ".B"]
 
 # -------------   Stop words  ------------------
 wantStopwordsRemoved = raw_input("Would you like to omit stopwords? If yes, type Y. Otherwise, type N: ")
@@ -30,18 +25,8 @@ if wantStopwordsRemoved == "y":
 
     f2.close()
 
-#-------------- Take out punctuation / lowercase ----------
-reservedWords=[".I", ".T", ".W", ".A", ".K", ".C", ".N", ".X", ".B"]
-# temp=""
-# for word in rText:
-#     if word not in reservedWords:
-#         word = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|-|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', word).lower()
-#     temp += word
-# rText = temp
-
 # 1.1
 #-------------------- create list of document objects -----------------------
-
 #split file into documents by delimeter '.I'
 docs = rText.split('.I ')
 
@@ -58,7 +43,7 @@ for doc in docs:
     except AttributeError:
         ID = 'ERROR no ID found' 
 
-    #---- Get Title ----
+    #--------- Get Title ---------
     title =""
     textIO = StringIO.StringIO(allText)
     for line in textIO:
@@ -74,17 +59,12 @@ for doc in docs:
                     title += nextLine
                 else:
                     run = False
-            #print("TITLE: " + title)
+            
     # take out punctuation
     title = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', title).lower()
     title = re.sub('-', ' ', title).lower()
-    # take out stopwords
-    # if wantStopwordsRemoved == "y":
-    #     f2 = open("stopwords.txt", "r")
-    #     for stopWord in f2:
-    #         #title = title.replace(stopWord.strip(), "")
-    #         title = re.sub(r"%s" % stopWord , "", title)
-    #     f2.close()
+
+    #take stopwords out of title
     if wantStopwordsRemoved == "y":
         f2 = open("stopwords.txt", "r")
         stopwordsArray=[]
@@ -96,7 +76,7 @@ for doc in docs:
                 temp += word + " "
         title = temp
 
-    #stem it
+    # stem title
     if wantStemming == "y":
         p = PorterStemmer()
         output=""
@@ -104,10 +84,10 @@ for doc in docs:
             output += p.stem(word, 0,len(word)-1) + " "
             #print(output)
         title = output
-    
+    #--------- End of getting Title ---------
     
 
-    #---- Get ABSTRACT ----
+    #------------ Get ABSTRACT --------------
     abstract =""
     textIO = StringIO.StringIO(allText)
     for line in textIO:
@@ -123,16 +103,12 @@ for doc in docs:
                     abstract += nextLine
                 else:
                     run = False
-            #print("ABSTRACT: " + abstract)
-    # take out punctuation
+
+    # take out punctuation from abstract
     abstract = re.sub('!|"|#|\\$|%|&|\'|\\(|\\)|\\*|\\+|,|\\.|/|:|;|<|=|>|\\?|@|\\[|]|\\^|_|`|\\{|}|~|\\\\|\\|', '', abstract).lower()
     abstract = re.sub('-', ' ', abstract).lower()
-    # take out stopwords
-    # if wantStopwordsRemoved == "y":
-    #     f2 = open("stopwords.txt", "r")
-    #     for stopWord in f2:
-    #         #abstract = abstract.replace(stopWord.strip(), "")
-    #         abstract = re.sub(r"%s" % stopWord , "", abstract)
+
+    # take out stopwords from abstract
     if wantStopwordsRemoved == "y":
         f2 = open("stopwords.txt", "r")
         stopwordsArray=[]
@@ -145,11 +121,7 @@ for doc in docs:
         abstract = temp
         f2.close()
 
-    
-        
-
-
-    #stem it DOG!
+    # stem abstract
     if wantStemming == "y":
         p = PorterStemmer()
         output=""
@@ -157,32 +129,29 @@ for doc in docs:
             output += p.stem(word, 0,len(word)-1) + " "
             #print(output)
         abstract = output
-
-
-
+    #------------ End of getting abstract --------------
 
     #combine title and abstract
     titleAbstract = title + abstract
         
 
-    #create document dictionary initialized with all zero frequency
+    #----------------------- Create Document -------------------------
+
+    #create doc frequency dictionary initialized with all zero frequency
     for word in titleAbstract.split():
         docFrequency[word.strip()] = 0
         term = TermInfo(word.strip(), 0)
         terms[word.strip()] = term
     
-
     #document with text and initialized (all zero) dictionary of words
-    
     document = DocumentStruct(allText, terms, docFrequency, ID, title, abstract, titleAbstract, {})
     documents.append(document)
 
 # ---------------------------------------------------------------------
 
 # 1.2
-#------ for each document get the frequency of all the words in the document----
+#---------------------- Populate the Documents -------------------
 ATAA = ""
-f3 = open("docc.txt", "w+")
 
 # init document positions
 for doc in documents:
@@ -194,24 +163,18 @@ for doc in documents:
     for idx, word in enumerate(doc.titleAbstract.split()):
         doc.positions[word].append(idx)
 
-
-
+# get term frequency
 for doc in documents:
-    f3.write(doc.ID + "\r\n")
     ATAA += doc.titleAbstract
     for idx, word in enumerate (doc.titleAbstract.split()):
         #doc.positions["accelerating"].append(0)
         if word not in reservedWords:
             doc.docFrequency[word.strip()] += 1
             doc.terms[word.strip()].frequency += 1
-f3.close()
-
-#print(documents[20].positions)
-#print(documents[20].ID)
-#print(documents[20].titleAbstract)
 
 
 
+# 2.0
 #----------------------- Postings list ------------------------
 #init postingsList
 postingsList={}
@@ -252,22 +215,22 @@ for post in sorted(postingsList.keys()):
 
 
 
-
+# 3.0
 #----------------------- CREATE DICTIONARY -------------------------------------
-# 2.1
-#init dictionary 
+
+#init dictionary 3.1
 print("Creating dictionary ...")
 wordcount={}
 for word in ATAA.split():
     if word not in reservedWords:
         wordcount[word.strip()] =0
 
+# fill dictionary
 for word in ATAA.split():
     if word not in reservedWords:
         wordcount[word.strip()] +=1
 
-
-# 2.2
+# 3.2
 # write to dictionaty file. 
 dicFile = open("dictionary.txt","w+")
 for key in sorted(wordcount.keys()) :
