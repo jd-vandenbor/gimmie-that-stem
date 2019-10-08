@@ -14,7 +14,7 @@ while userInput != "ZZEND":
     print(" ")
 
     #get user input
-    userInput = raw_input("Please type in a term to test: ")
+    userInput = raw_input("Please type in a sign term to test: ")
     userInput = userInput.strip()
     print(" ")
     #--- stem input if desired ---
