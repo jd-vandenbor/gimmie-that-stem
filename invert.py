@@ -28,7 +28,7 @@ if wantStopwordsRemoved == "y":
 #-------------------- create list of document objects -----------------------
 #split file into documents by delimeter '.I'
 docs = rText.split('.I ')
-
+numberOfDocuments = len(docs)
 
 for doc in docs:
     #---init variables-- 
