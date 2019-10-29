@@ -1,0 +1,1176 @@
+.I 324
+.T
+Romberg Integration (Algorithm 60)
+.B
+CACM June, 1961
+.A
+Bauer, F. L.
+.N
+CA610601 JB March 16, 1978  10:57 PM
+.X
+1352	5	324
+1982	5	324
+324	5	324
+324	5	324
+324	5	324
+2040	5	324
+1	6	324
+834	6	324
+872	6	324
+1040	6	324
+1092	6	324
+1241	6	324
+1241	6	324
+1273	6	324
+1273	6	324
+1273	6	324
+1352	6	324
+1356	6	324
+1883	6	324
+324	6	324
+324	6	324
+324	6	324
+429	6	324
+570	6	324
+621	6	324
+621	6	324
+786	6	324
+.I 325
+.T
+Numerical Solution of the Polynomial Equation (Algorithm 30)
+.B
+CACM May, 1961
+.A
+Alexander, W. J.
+.N
+CA610509 JB March 16, 1978  10:58 PM
+.X
+325	5	325
+325	5	325
+325	5	325
+.I 326
+.T
+MATHSORT (Algorithm 23)
+.B
+CACM May, 1961
+.A
+Ranshaw, R. W.
+.N
+CA610508 JB March 16, 1978  10:59 PM
+.X
+326	5	326
+326	5	326
+326	5	326
+.I 327
+.T
+Zeros of a Real Polynomial by Resultant Procedure (Algorithm 59)
+.B
+CACM May, 1961
+.A
+Bareiss, E. H.
+Fisherkeller, M. A.
+.N
+CA610507 JB March 16, 1978  11:01 PM
+.X
+1667	5	327
+327	5	327
+327	5	327
+327	5	327
+178	6	327
+1242	6	327
+327	6	327
+.I 328
+.T
+Matrix Inversion (ALgorithm 58)
+.B
+CACM May, 1961
+.A
+Cohen, D.
+.N
+CA610506 JB March 16, 1978  11:03 PM
+.X
+328	5	328
+328	5	328
+328	5	328
+.I 329
+.T
+Automatic Abstracting and Indexing Survey and Recommendations
+.W
+In preparation for the widespread use of automatic
+scanners which will read documents and transmit 
+their contents to other machines for analysis, this report
+presents a new concept in automatic analysis: 
+the relative-frequency approach to measuring  the significance
+of words, word groups, and sentences. 
+ The relative-frequency approach is discussed in detail,
+as is its application to problems of automatic 
+indexing and automatic abstracting.  Included in the
+report is a summary of automatic analysis studies 
+published as of the date of writing.  Conclusions are
+that point toward more sophisticated mathematical 
+and linguistic techniques for the solution of problems of automatic analysis.
+.B
+CACM May, 1961
+.A
+Edmundson, H. P.
+Wyllys, R. E.
+.N
+CA610505 JB March 16, 1978  11:08 PM
+.X
+1087	5	329
+329	5	329
+329	5	329
+329	5	329
+634	5	329
+329	6	329
+329	6	329
+.I 330
+.T
+A Method for Evaluating the Area of the Normal Function
+.B
+CACM May, 1961
+.A
+Baker, F. B.
+.N
+CA610504 JB March 16, 1978  11:09 PM
+.X
+330	5	330
+330	5	330
+330	5	330
+.I 331
+.T
+Successive Approximations and Computer Storage
+Problems in Ordinary Differential Equations
+.B
+CACM May, 1961
+.A
+Bellman, R.
+.N
+CA610503 JB March 16, 1978  11:10 PM
+.X
+331	5	331
+331	5	331
+331	5	331
+.I 332
+.T
+An Indirect Chaining Method for Addressing on Secondary Keys
+.W
+Methods for entering random access files on
+the basis of one key are briefly surveyed.  The 
+widely used chaining method, based on a pseudo-random
+key transformation, is reviewed in more detail. 
+ An efficient generalization of the chaining method
+which permits recovery on additional keys is then 
+presented.
+.B
+CACM May, 1961
+.A
+Johnson, L. R.
+.N
+CA610502 JB March 16, 1978  11:13 PM
+.X
+911	5	332
+1271	5	332
+1785	5	332
+332	5	332
+332	5	332
+332	5	332
+2543	5	332
+2552	5	332
+911	6	332
+911	6	332
+1785	6	332
+1785	6	332
+1786	6	332
+1973	6	332
+332	6	332
+332	6	332
+332	6	332
+332	6	332
+332	6	332
+2107	6	332
+2109	6	332
+2203	6	332
+492	6	332
+492	6	332
+.I 333
+.T
+Design of an Improved* Transmission/Data Processing Code
+.B
+CACM May, 1961
+.A
+Bemer, R. W.
+Smith Jr., H. J.
+Williams Jr., F. A.
+.N
+CA610501 JB March 16, 1978  11:14 PM
+.X
+333	4	333
+230	5	333
+333	5	333
+333	5	333
+333	5	333
+.I 334
+.T
+Division and Square Root in the Quater-Imaginary Number System
+.B
+CACM April, 1961
+.A
+Nadler, M.
+.N
+CA610334 JB March 16, 1978  11:16 PM
+.X
+334	5	334
+334	5	334
+334	5	334
+.I 335
+.T
+Some Numerical Experiments Using Newton's Method
+for Nonlinear Parabolic and EllipticBoundary-Value 
+Problems
+.W
+Using a generalization of Newton's method, a nonlinear
+parabolic equation of the form U(t)-U(xx)=g(U) 
+and a nonlinear elliptic equation U(xx)+U(yy)=exp(U)
+are solved numerically Comparison of these results 
+with results obtained using the Picard iteration procedure
+show that in many cases the quisi linearization 
+method offers substantial advantages in both time and accuracy.
+.B
+CACM April, 1961
+.A
+Bellman, R.
+Juncosa, M. L.
+Kalaba, R.
+.N
+CA610433 JB March 16, 1978  11:20 PM
+.X
+335	5	335
+335	5	335
+335	5	335
+.I 336
+.T
+A Practical Technique for the Determination of
+the Optimum Relaxation Factor of the Successive 
+Over-Relaxation Method
+.B
+CACM April, 1961
+.A
+Kulsrud, H. E.
+.N
+CA610432 JB March 16, 1978  11:27 PM
+.X
+336	5	336
+336	5	336
+336	5	336
+.I 337
+.T
+Further Survey of Punched Card Codes
+.B
+CACM April, 1961
+.A
+Ross, H. M.
+.N
+CA610431 JB March 16, 1978  11:34 PM
+.X
+337	5	337
+337	5	337
+337	5	337
+.I 338
+.T
+GROUT II (Algorithm 43)
+.B
+CACM April, 1961
+.A
+Thacher Jr., H.C.
+.N
+CA610430 JB March 16, 1978  11:35 PM
+.X
+338	5	338
+338	5	338
+338	5	338
+.I 339
+.T
+Real Exponential Integral (Algorithm 20)
+.B
+CACM April, 1961
+.A
+Alexander, W. J.
+Thacher Jr., H. C.
+.N
+CA610429 JB March 16, 1978  11:36 PM
+.X
+339	5	339
+339	5	339
+339	5	339
+.I 340
+.T
+Legendre Polynomial (Algorithm 13)
+.B
+CACM April, 1961
+.A
+Herndon, J.
+.N
+CA610428 JB March 16, 1978  11:37 PM
+.X
+1611	5	340
+340	5	340
+340	5	340
+340	5	340
+1295	6	340
+340	6	340
+.I 341
+.T
+Chebyschev Polynomial (Algorithm 10)
+.B
+CACM April, 1961 
+.A
+Herndon, J.
+.N
+CA610427 JB March 16, 1978  11:38 PM
+.X
+341	5	341
+341	5	341
+341	5	341
+.I 342
+.T
+Solution of Polynomial Equation by Barstow-Hitchcock (Algorithm 3)
+.B
+CACM April, 1961
+.A
+Herndon, J.
+.N
+CA610426 JB March 16, 1978  11:39 PM
+.X
+342	5	342
+342	5	342
+342	5	342
+.I 343
+.T
+On Frequently Occurring Errors in ALGOL 60 Programs (Algorithm 25)
+.B
+CACM April, 1961
+.A
+Herndon, J.
+.N
+CA610425 JB March 16, 1978  11:40 PM
+.X
+343	5	343
+343	5	343
+343	5	343
+.I 344
+.T
+Ber or Bei Function (Algorithm 57)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610424 JB March 16, 1978  11:42 PM
+.X
+344	5	344
+344	5	344
+344	5	344
+.I 345
+.T
+Complete Elliptic Integral of the Second Kind (Algorithm 56)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610423 JB March 16, 197811:43 PM
+.X
+345	5	345
+345	5	345
+345	5	345
+.I 346
+.T
+Complete Elliptic Integral of the First Kind (Algorithm 55)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610422 JB March 16, 1978  11:44 PM
+.X
+346	5	346
+346	5	346
+346	5	346
+.I 347
+.T
+Gamma Function for Range 1 to 2 (Algorithm 54)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610421 JB March 16, 1978  11:45 PM
+.X
+347	5	347
+347	5	347
+347	5	347
+.I 348
+.T
+Nth Roots of a Complex Number (Algorithm 53)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610420 JB March 16, 1978  11:47 PM
+.X
+348	5	348
+348	5	348
+348	5	348
+.I 349
+.T
+A Set of Test Matrices
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610419 JB March 16, 1978  11:47 PM
+.X
+349	5	349
+349	5	349
+349	5	349
+.I 350
+.T
+Adjust Inverse of a Matrix When an Element is Perturbed (Algorithm 51)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610418 JB March 16, 1978  11:49 PM
+.X
+350	5	350
+350	5	350
+350	5	350
+.I 351
+.T
+Inverse of a Finite Segment of the Hilbert Matrix (Algorithm 50)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610417 JB March 16, 1978  11:50 PM
+.X
+351	5	351
+351	5	351
+351	5	351
+.I 352
+.T
+Spherical Neumant Function (Algorithm 49)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610416 JB March 16, 1978  11:51 PM
+.X
+352	5	352
+352	5	352
+352	5	352
+.I 353
+.T
+Logarithm of A Complex Number (Algorithm 48)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610415 JB March 16, 1978  11:53 PM
+.X
+353	5	353
+353	5	353
+353	5	353
+.I 354
+.T
+Associated Legendre Functions of the First Kind
+for Real or Imaginary Arguments (Algorithm 47)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610414 JB March 16, 1978  11:57 PM
+.X
+354	5	354
+354	5	354
+354	5	354
+.I 355
+.T
+Exponential of a Complex Number (Algorithm 46)
+.B
+CACM April, 1961
+.A
+Herndon, J. R.
+.N
+CA610413 JB March 16, 1978  11:59 PM
+.X
+355	5	355
+355	5	355
+355	5	355
+.I 356
+.T
+INTEREST (Algorithm 45)
+.B
+CACM April, 1961
+.A
+Ingerman, P. Z.
+.N
+CA610412 JB March 17, 1978  12:00 AM
+.X
+356	5	356
+356	5	356
+356	5	356
+.I 358
+.T
+Crout with Pivoting II (Algorithm 43)
+.B
+CACM April, 1961
+.A
+Thacher Jr., H. C.
+.N
+CA610410 JB March 17, 1978  12:02 AM
+.X
+358	5	358
+358	5	358
+
+.I 365
+.T
+Bessel Functions of Integral Order and Complex Argument
+.B
+CACM April, 1961
+.A
+Gray, M. C.
+.N
+CA610403 JB March 17, 1978  12:13 AM
+.X
+365	5	365
+365	5	365
+365	5	365
+.I 366
+.T
+Eigenvalues of a Symmetric 3 x 3 Matrix
+.B
+CACM April, 1961
+.A
+Smith, O. K.
+.N
+CA610402 JB March 17, 1978  12:14 AM
+.X
+366	5	366
+366	5	366
+366	5	366
+.I 367
+.T
+Topological Ordering of a List of
+Randomly-Numbered Elements of a Network
+.W
+A network of directed line segments free of circular
+elements is assumed.  The lines are identified 
+by their terminal nodes and the nodes are assumed to
+be numbered by a non-topological system.  Given 
+a list of these lines in numeric order, a simple technique
+can be used to create at high speed a list 
+in topological order.
+.B
+CACM April, 1961
+.A
+Lasser, D. J.
+.N
+CA610401 JB March 17, 1978  12:17 AM
+.X
+1050	5	367
+1226	5	367
+367	5	367
+367	5	367
+367	5	367
+441	5	367
+758	5	367
+849	6	367
+106	6	367
+209	6	367
+367	6	367
+367	6	367
+367	6	367
+367	6	367
+441	6	367
+627	6	367
+.I 368
+.T
+Real Zeros of an Arbitrary Function (Algorithm 25)
+.B
+CACM March, 1961
+.A
+Collinge, R. M.
+.N
+CA610314 JB March 17, 1978  12:31 AM
+.X
+368	5	368
+368	5	368
+368	5	368
+.I 369
+.T
+Crout with Pivoting (Algorithm 16)
+.B
+CACM March, 1961
+.A
+Thacher Jr., H. C.
+.N
+CA610313 JB March 17, 1978  12:32 AM
+.X
+369	5	369
+369	5	369
+369	5	369
+.I 370
+.T
+Bisection Routine (Algorithm 4)
+.B
+CACM March, 1961
+.A
+Rader, P. J.
+.N
+CA610312 JB March 17, 1978  12:33 AM
+.X
+370	5	370
+370	5	370
+370	5	370
+.I 371
+.T
+Remarks on Algorithms 2 and 3, Algorithm 15 and Algorithms 25 and 26
+.B
+CACM March, 1961
+.A
+Wilkinson, J. H.
+.N
+CA610311 JB March 17, 1978  12:35 AM
+.X
+371	5	371
+371	5	371
+371	5	371
+.I 372
+.T
+Critical Path Scheduling (Algorithm 40)
+.B
+CACM March, 1961
+.A
+Leavenworth, B.
+.N
+CA610310 JB March 17, 1978  12:36 AM
+.X
+372	5	372
+372	5	372
+372	5	372
+.I 373
+.T
+Correlation Coefficients with Matrix Multiplication (Algorithm 39)
+.B
+CACM March, 1961
+.A
+Sassouni, P.
+.N
+CA610309 JB March 17, 1978  12:37 AM
+.X
+373	5	373
+373	5	373
+373	5	373
+.I 374
+.T
+Telescope2 (Algorithm 38)
+.B
+CACM March, 1961
+.A
+Brons, K. A.
+.N
+CA610308 JB March 17, 1978  12:38 AM
+.X
+374	5	374
+374	5	374
+374	5	374
+.I 375
+.T
+Telescope1 (Algorithm 37)
+.B
+CACM March, 1961
+.A
+Brons, K. A.
+.N
+CA610307 JB March 17, 1978  12:39 AM
+.X
+375	5	375
+375	5	375
+375	5	375
+.I 376
+.T
+Tchebycheff (Algorithm 36)
+.B
+CACM March, 1961
+.A
+Gianni, A. J.
+.N
+CA610306 JB March 17, 1978  12:40 AM
+.X
+1754	5	376
+376	5	376
+376	5	376
+376	5	376
+274	6	376
+376	6	376
+.I 377
+.T
+SIEVE (Algorithm 35)
+.B
+CACM March, 1961
+.A
+Wood, T. C.
+.N
+CA610305 JB March 17, 1978  12:41 AM
+.X
+1841	5	377
+377	5	377
+377	5	377
+377	5	377
+2120	5	377
+1537	6	377
+1539	6	377
+1539	6	377
+1841	6	377
+377	6	377
+377	6	377
+.I 378
+.T
+A Generalized Technique for Symbol
+Manipulation and Numerical Calculation 
+.B
+CACM March, 1961
+.A
+Ross, D. T.
+.N
+CA610304 JB March 17, 1978  12:42 AM
+.X
+1024	4	378
+1050	4	378
+1051	4	378
+1102	4	378
+1102	4	378
+1132	4	378
+1390	4	378
+1486	4	378
+1549	4	378
+1706	4	378
+1826	4	378
+1878	4	378
+378	4	378
+378	4	378
+378	4	378
+2060	4	378
+2155	4	378
+2168	4	378
+2719	4	378
+2723	4	378
+2838	4	378
+2842	4	378
+2855	4	378
+2879	4	378
+3008	4	378
+3077	4	378
+3080	4	378
+3106	4	378
+627	4	378
+731	4	378
+798	4	378
+106	4	378
+1051	5	378
+208	5	378
+209	5	378
+210	5	378
+1552	5	378
+1665	5	378
+1860	5	378
+378	5	378
+378	5	378
+378	5	378
+2155	5	378
+1184	6	378
+1366	6	378
+1389	6	378
+1389	6	378
+1421	6	378
+1421	6	378
+1496	6	378
+1626	6	378
+1641	6	378
+1781	6	378
+1785	6	378
+1786	6	378
+210	6	378
+210	6	378
+378	6	378
+378	6	378
+378	6	378
+378	6	378
+378	6	378
+2046	6	378
+2060	6	378
+406	6	378
+3184	6	378
+631	6	378
+731	6	378
+793	6	378
+794	6	378
+799	6	378
+.I 379
+.T
+Bitwise Operations
+.B
+CACM March, 1961
+.A
+Strachey, C.
+.N
+CA610303 JB March 17, 1978  12:42 AM
+.X
+379	5	379
+379	5	379
+379	5	379
+.I 380
+.T
+Comparison of Iterative Methods for the Calculation of nth Roots
+.W
+Three iterative methods for calculation of
+nth roots (including one proposed by the author) 
+are compared in two ways: (1) Theoretical convergence
+estimates are given.  (2) A new macrocompiler which 
+estimates machine running time is used to compare the
+running time of the three methods for a variety 
+of input data.
+.B
+CACM March, 1961
+.A
+Traub, J. F.
+.N
+CA610302 JB March 17, 1978  12:45 AM
+.X
+319	5	380
+380	5	380
+380	5	380
+380	5	380
+380	6	380
+.I 381
+.T
+An Alternate Form of the "UNCOL Diagram"
+.B
+CACM March, 1961
+.A
+Bratman, H.
+.N
+CA610301 JB March 17, 1978  12:46 AM
+.X
+1159	4	381
+1988	4	381
+381	4	381
+1781	5	381
+1988	5	381
+381	5	381
+381	5	381
+381	5	381
+14	5	381
+123	6	381
+196	6	381
+919	6	381
+990	6	381
+1007	6	381
+1046	6	381
+1131	6	381
+1139	6	381
+1140	6	381
+1149	6	381
+1198	6	381
+1215	6	381
+1223	6	381
+1265	6	381
+1303	6	381
+1323	6	381
+1358	6	381
+1366	6	381
+1421	6	381
+1460	6	381
+1462	6	381
+1463	6	381
+1467	6	381
+1468	6	381
+1477	6	381
+1491	6	381
+1496	6	381
+1496	6	381
+1531	6	381
+1535	6	381
+1565	6	381
+1601	6	381
+1602	6	381
+1613	6	381
+1614	6	381
+1626	6	381
+1641	6	381
+1787	6	381
+1788	6	381
+205	6	381
+224	6	381
+249	6	381
+288	6	381
+316	6	381
+381	6	381
+381	6	381
+398	6	381
+11	6	381
+11	6	381
+14	6	381
+404	6	381
+410	6	381
+463	6	381
+464	6	381
+483	6	381
+3184	6	381
+3188	6	381
+584	6	381
+600	6	381
+680	6	381
+691	6	381
+763	6	381
+799	6	381
+.I 382
+.T
+Statistical Programs at the University of North Carolina
+.B
+CACM February, 1961
+.A
+Bush, N.
+.N
+CA610216 JB March 17, 1978  12:48 AM
+.X
+382	5	382
+382	5	382
+382	5	382
+.I 383
+.T
+On Finding Minimum Routes in a Network With Turn Penalties
+.B
+CACM February, 1961
+.A
+Caldwell, T.
+.N
+CA610215 JB March 17, 1978  12:49 AM
+.X
+383	5	383
+383	5	383
+383	5	383
+.I 384
+.T
+Gamma Function (Algorithm 34)
+.B
+CACM February, 1961
+.A
+Lipp, M. F.
+.N
+CA610214 JB March 17, 1978  12:49 AM
+.X
+384	5	384
+384	5	384
+384	5	384
+.I 385
+.T
+FACTORIAL (Algorithm 33)
+.B
+CACM February, 1961
+.A
+Lipp, M. F.
+.N
+CA610213 JB March 17, 1978  12:50 AM
+.X
+1234	5	385
+385	5	385
+385	5	385
+385	5	385
+944	6	385
+321	6	385
+385	6	385
+400	6	385
+402	6	385
+404	6	385
+3184	6	385
+729	6	385
+.I 386
+.T
+MULTINT (Algorithm 32)
+.B
+CACM February, 1961
+.A
+Freeman Jr., R. D.
+.N
+CA610212 JB March 17, 1978  12:52 AM
+.X
+1146	5	386
+386	5	386
+386	5	386
+386	5	386
+386	6	386
+.I 387
+.T
+Gamma Function (Algorithm 31)
+.B
+CACM February, 1961
+.A
+Collinge,R. M.
+.N
+CA610211 JB March 17, 1978  12:53 AM
+.X
+254	5	387
+387	5	387
+387	5	387
+387	5	387
+196	6	387
+321	6	387
+387	6	387
+.I 388
+.T
+Solution of Polynomial Equations by
+Bairstow Hitchcock Method (Algorithm 3)
+.B
+CACM February, 1961
+.A
+Vandergraft, J. S.
+.N
+CA610210 JB March 17, 1978  12:54 AM
+.X
+388	5	388
+388	5	388
+388	5	388
+.I 389
+.T
+Real Exponential Integral (Algorithm 20)
+.B
+CACM February, 1961
+.A
+Peavy, S.
+.N
+CA610209 JB March 17, 1978  12:55 AM
+.X
+389	5	389
+389	5	389
+389	5	389
+.I 390
+.T
+Complex Exponential Integral (Algorithm 13)
+.B
+CACM February, 1961
+.A
+Rader, P. J.
+Thacher Jr., H. C.
+.N
+CA610208 JB March 17, 1978  12:56 AM
+.X
+390	5	390
+390	5	390
+390	5	390
+.I 391
+.T
+The BKS System for the Philco-2000 
+.B
+CACM February, 1961
+.A
+Smith, R. B.
+.N
+CA610207 JB March 17, 1978  12:57 AM
+.X
+391	5	391
+391	5	391
+391	5	391
+.I 392
+.T
+Comment on A Paper on Parallel Processing
+.B
+CACM February, 1961
+.A
+Nekora, M. R.
+.N
+CA610206 JB March 17, 1978  12:58 AM
+.X
+392	5	392
+392	5	392
+392	5	392
+.I 393
+.T
+Two Subroutines for Symbol Manipulation with an Algebraic Compiler
+.B
+CACM February, 1961
+.A
+Carr III, J. W.
+Hanson, J. W.
+.N
+CA610205 JB March 17, 1978  12:59 AM
+.X
+393	5	393
+393	5	393
+393	5	393
+561	5	393
+393	6	393
+77	6	393
+.I 394
+.T
+Multiple Programming Data Processing
+.B
+CACM February, 1961
+.A
+Ryle, B. L.
+.N
+CA610204 JB March 17, 1978  1:00 AM
+.X
+394	5	394
+394	5	394
+394	5	394
+.I 395
+.T
+Multiple-Precision Division 
+.B
+CACM February, 1961
+.A
+Rabinowitz, P.
+.N
+CA610202 JB March 17, 1978  1:01 AM
+.X
+395	5	395
+395	5	395
+395	5	395
+.I 396
+.T
+   Automation of Program  Debugging
+.W
+   Automatic Debugging can substantially reduce lead-time between the coding
+and the effective use of a complex program. It also enforces analysis of
+debugging criteria, resulting in verifiably accurate programs. The programmer
+specifies the program to be debugged, memory areas, set of input data, maximum
+repetition of loops, and checkpoint information for each set of data. The
+executive debugging program the runs the program to be debugged, performing
+checking functions and creating a trace record of its own later analysis and
+location of errors. Applications are quite flexible, and the system can be used
+alone or in conjunction with other debugging techniques.
+.B
+CACM July, 1961
+.A
+Jacoby, K.
+Layton, H.
+.N
+CA610714 ES March 17, 1982 10:10 AM
+.X
+931	5	396
+396	5	396
+396	5	396
+396	5	396
+202	6	396
+396	6	396
+634	6	396
