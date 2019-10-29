@@ -1,11 +1,25 @@
 import invert, DocumentStruct, timeit, math
 from PorterStemmer import *
 
-# helper function to remove duplicate documents
+#---------------------- helper functions ---------------------
+
+# remove duplicate documents
 def unique(seq):
     seen = set()
     seen_add = seen.add
     return [x for x in seq if not (x in seen or seen_add(x))]
+
+def dotProduct(d, q):
+    if len(d) != len(q):
+        return 0
+    return sum(i[0] * i[1] for i in zip(d, q))
+
+def magnitude(d):
+    count = 0
+    for num in d:
+        count += num**2
+    return math.sqrt(count)
+#-------------------------------------------------------------
 
 #--------- set up ----------
 postingsList = invert.postingsList
@@ -32,60 +46,96 @@ while userInput != "ZZEND":
                 stemmed = p.stem(inputWords[idx], 0,len(inputWords[idx])-1)
                 inputWords[idx] = stemmed
 
-    idfs={}
     #---------------- MAIN LOOP ----------------
+    idfs={}
     docs=[]
     fs=[]
     tfs=[]
     ws={}
+
+    # create doc list that has a least one query word
     for x, word in enumerate(inputWords):
-        # print("N: " + str(numberOfDocuments))
-        # print("Di: " + str(len(postingsList[word])))
-        idf = math.log10(numberOfDocuments / len(postingsList[word]))
-        idfs[word]=idf
         for doc in postingsList[word]:
             docs.append(doc)
     docs = unique(docs)
-    # for doc in docs:
-    #     print(doc.ID)
 
-    docseen=[]
+    # create word bank
+    wordCollection=[]
+    for i in inputWords:
+        if i not in wordCollection:
+            wordCollection.append(i)
     for doc in docs:
+        for word in doc.titleAbstract.split():
+            if word not in wordCollection:
+                wordCollection.append(word)
 
-        docseen.append(doc)
-    
-        f=[]
-        tf=[]
-        w=[]
-        for word in inputWords:
+    #get idf values
+    for x, word in enumerate(wordCollection):
+        idf = math.log10(numberOfDocuments / len(postingsList[word]))
+        idfs[word]=idf
+
+    # get weighted document vectors 
+    for doc in docs:
+        fv=[]
+        tfv=[]
+        wv=[]
+        for word in wordCollection:
             try:
-                f.append(doc.docFrequency[word])
-                tf.append(1 + math.log10(doc.docFrequency[word]))
-                w.append(idfs[word] * (1 + math.log10(doc.docFrequency[word])))
+                fv.append(doc.docFrequency[word])
+                tfv.append(1 + math.log10(doc.docFrequency[word]))
+                wv.append(idfs[word] * (1 + math.log10(doc.docFrequency[word])))
+
             except:
-                f.append(0)
-                tf.append(0)
-                w.append(0)
-        
-        fs.append(f)
-        tfs.append(tf)
-        ws[doc.ID] = w
-
-    # for _f in fs:
-    #     print(_f)
-    
-    # print("T's")
-    # for _tf in tfs:
-    #     print(_tf)
-
-    for x, _w in enumerate(ws):
+                fv.append(0)
+                tfv.append(0)
+                wv.append(0)
+        # print("doc.titleAbstract")
+        # print(doc.titleAbstract)
+        # print("fv")
+        # print(fv)
+        # print("tfv")
+        # print(tfv)
+        # print("wv")
+        # print(wv)
+        fs.append(fv)
+        tfs.append(tfv)
+        ws[doc.ID] = wv
+    #print("Document Weight Vectors:")
+    # for x, _w in enumerate(ws):
         # print(fs[x])
         # print(tfs[x])
-        print(str(_w) + ": ")
-        print(ws[_w])
+        # print(str(_w) + ": " + str(ws[_w]))
 
-    
-    
-    for idf in idfs:
-        print(idfs[idf])
+    # get query and query frequencies
+    qWeight=[]
+    query = ' '.join(inputWords)
+    print("query:")
+    print(query)
+    print("")
+    querywords={}
+    for word in wordCollection:
+        querywords[word] = 0
+    for word in query.split():
+        querywords[word] += 1
 
+    # get weighted query vector qWeight 
+    for word in wordCollection:
+        fv=[]
+        tfv=[]
+        try:
+            fv.append(querywords[word])
+            tfv.append(1 + math.log10(querywords[word]))
+            qWeight.append(idfs[word] * (1 + math.log10(querywords[word])))
+        except:
+            fv.append(0)
+            tfv.append(0)
+            qWeight.append(0)
+
+#------- get cosine similarity ---------
+    for weightedVector in ws:
+        dot = dotProduct(ws[weightedVector], qWeight)
+        magTotal = magnitude(ws[weightedVector]) * magnitude(qWeight)
+        cosineSimilarity = dot/magTotal
+        print("cosineSimilarity of Document " + weightedVector + ":")
+        print(cosineSimilarity)
+        print("")
