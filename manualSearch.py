@@ -24,11 +24,19 @@ def magnitude(d):
 #--------- set up ----------
 postingsList = invert.postingsList
 postingListFile = open("postingsLists.txt", "r")
+userInput = ""
+start = 0
+times=[]
 numberOfDocuments = invert.numberOfDocuments
+#-------- user input loop -----------
+while userInput != "ZZEND":
+    print(" ")
 
-#-------- SEARCH -----------
-def search(input):
-    userInput = input
+    #get user input
+    userInput = raw_input("Please type in a term to test: ")
+    userInput = userInput.strip()
+    print(" ")
+
     inputWords = userInput.split()
 
     #--- stem input if desired ---
@@ -81,9 +89,22 @@ def search(input):
                 fv.append(0)
                 tfv.append(0)
                 wv.append(0)
+        # print("doc.titleAbstract")
+        # print(doc.titleAbstract)
+        # print("fv")
+        # print(fv)
+        # print("tfv")
+        # print(tfv)
+        # print("wv")
+        # print(wv)
         fs.append(fv)
         tfs.append(tfv)
         ws[doc.ID] = wv
+    #print("Document Weight Vectors:")
+    # for x, _w in enumerate(ws):
+        # print(fs[x])
+        # print(tfs[x])
+        # print(str(_w) + ": " + str(ws[_w]))
 
     # get query and query frequencies
     qWeight=[]
@@ -110,19 +131,11 @@ def search(input):
             tfv.append(0)
             qWeight.append(0)
 
-    #------- get cosine similarity ---------    
-    returnDic={}
+#------- get cosine similarity ---------
     for weightedVector in ws:
         dot = dotProduct(ws[weightedVector], qWeight)
         magTotal = magnitude(ws[weightedVector]) * magnitude(qWeight)
         cosineSimilarity = dot/magTotal
-
-        returnDic[weightedVector] = cosineSimilarity
         print("cosineSimilarity of Document " + weightedVector + ":")
         print(cosineSimilarity)
         print("")
-    
-    return returnDic
-    
-
-
