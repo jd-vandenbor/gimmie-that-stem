@@ -122,7 +122,9 @@ def search(input):
         print(cosineSimilarity)
         print("")
     
-    return returnDic
+    import operator
+    sortedDocs = sorted(returnDic.items(), key=operator.itemgetter(1))
+    return sortedDocs
     
 
 
