@@ -41,6 +41,24 @@ for doc in docs:
     except AttributeError:
         ID = 'ERROR no ID found' 
 
+    #--------- Get Author ---------
+    author =""
+    textIO = StringIO.StringIO(allText)
+    for line in textIO:
+        if line.startswith(".A"):
+            run = True
+            while(run):
+                try:
+                    nextLine = next(textIO)
+                except:
+                    run = False
+                if not re.match("\.I|\.T|\.W|\.A|\.K|\.C|\.N|\.X|\.B" , nextLine):
+                    author += nextLine
+                else:
+                    run = False
+    author = author.strip()
+
+
     #--------- Get Title ---------
     title =""
     textIO = StringIO.StringIO(allText)
@@ -142,7 +160,7 @@ for doc in docs:
         docFrequency[word.strip()] = 0
     
     #document with text and initialized (all zero) dictionary of words
-    document = DocumentStruct(allText, docFrequency, ID, title, rawTitle, abstract, titleAbstract, {})
+    document = DocumentStruct(allText, docFrequency, ID, title, rawTitle, author, abstract, titleAbstract, {})
     documents.append(document)
 
 # ---------------------------------------------------------------------

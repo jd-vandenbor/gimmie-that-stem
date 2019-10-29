@@ -324,16 +324,3 @@ uncol :: 1
 univers :: 1
 us :: 9
 ut :: 1
-uxxgu :: 1
-uxxuyyexpu :: 1
-valu :: 1
-varieti :: 1
-verifi :: 1
-wai :: 1
-which :: 3
-wide :: 1
-widespread :: 1
-word :: 2
-write :: 1
-x :: 1
-zero :: 2

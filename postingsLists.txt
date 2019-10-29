@@ -650,29 +650,4 @@ us: [ ID:329 | Freq:1 | Pos: 7, ], [ ID:332 | Freq:1 | Pos: 17, ], [ ID:335 | Fr
 
 ut: [ ID:335 | Freq:1 | Pos: 19, ], 
 
-uxxgu: [ ID:335 | Freq:1 | Pos: 20, ], 
-
-uxxuyyexpu: [ ID:335 | Freq:1 | Pos: 24, ], 
-
-valu: [ ID:335 | Freq:1 | Pos: 9, ], 
-
-varieti: [ ID:380 | Freq:1 | Pos: 38, ], 
-
-verifi: [ ID:396 | Freq:1 | Pos: 22, ], 
-
-wai: [ ID:380 | Freq:1 | Pos: 18, ], 
-
-which: [ ID:329 | Freq:1 | Pos: 10, ], [ ID:332 | Freq:1 | Pos: 32, ], [ ID:380 | Freq:1 | Pos: 27, ], 
-
-wide: [ ID:332 | Freq:1 | Pos: 16, ], 
-
-widespread: [ ID:329 | Freq:1 | Pos: 6, ], 
-
-word: [ ID:329 | Freq:2 | Pos: 30, 31, ], 
-
-write: [ ID:329 | Freq:1 | Pos: 54, ], 
-
-x: [ ID:366 | Freq:1 | Pos: 3, ], 
-
-zero: [ ID:327 | Freq:1 | Pos: 0, ], [ ID:368 | Freq:1 | Pos: 1, ], 
-
+uxxgu: [ ID:335 | Freq
