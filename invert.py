@@ -6,7 +6,7 @@ from PorterStemmer import *
 
 # ---------- Set up -------------
 print("test")
-f= open("cacm_copy.all","r")
+f= open("cacm.all","r")
 rText = f.read()
 title=""
 abstract=""

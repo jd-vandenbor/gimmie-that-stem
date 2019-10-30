@@ -1,4 +1,4 @@
-import invert, DocumentStruct, timeit, math, operator
+import invert, DocumentStruct, timeit, math, operator, re
 from PorterStemmer import *
 
 #---------------------- helper functions ---------------------
@@ -25,18 +25,25 @@ def magnitude(d):
 postingsList = invert.postingsList
 postingListFile = open("postingsLists.txt", "r")
 numberOfDocuments = invert.numberOfDocuments
+stopFile = open("stopwords.txt", "r")
 
 #-------- SEARCH -----------
 def search(input):
     userInput = input
-    inputWords = userInput.split()
 
+    # ----- remove stop words if desired-----
+    if invert.wantStopwordsRemoved == "y":
+        for stopWord in stopFile:
+            userInput = re.sub(r"\b%s\b" % stopWord , "", userInput)
+
+    inputWords = userInput.split()
     #--- stem input if desired ---
     if invert.wantStemming == "y" and userInput != "ZZEND":
             for idx, word in enumerate(inputWords):
                 p = PorterStemmer()
                 stemmed = p.stem(inputWords[idx], 0,len(inputWords[idx])-1)
                 inputWords[idx] = stemmed
+
 
     #---------------- MAIN LOOP ----------------
     idfs={}
@@ -68,11 +75,36 @@ def search(input):
         for word in doc.titleAbstract.split():
             if word not in wordCollection:
                 wordCollection.append(word)
-
+    sumIDF=0
+    sumInput=0
+    countIDF=0
+    countInput=0
     #get idf values
     for x, word in enumerate(wordCollection):
         idf = math.log10(numberOfDocuments / len(postingsList[word]))
         idfs[word]=idf
+        if word in inputWords:
+            sumIDF+=idf
+            countIDF+=1
+        sumIDF+=idf
+        countIDF+=1
+    averageIDF= (sumIDF/countIDF)
+    averageQueryIDF= (sumIDF/countIDF)
+
+    # Top-K step 1: remove idfs less than the average 
+    for x in idfs.keys():
+        print("IDF of: " + x)
+        if (idfs[x] < averageIDF) and (x not in inputWords):
+            wordCollection.remove(x)
+
+    # Top-K step 1: remove idfs less than the average 
+    for word in inputWords:
+        print("IDF of: " + word)
+        if (idfs[word] < averageQueryIDF) and (word in inputWords):
+            inputWords = filter(lambda a: a != word, inputWords)  
+
+
+    print("Made it past IDF")
 
     # get weighted document vectors 
     for doc in docs:
@@ -126,9 +158,9 @@ def search(input):
         cosineSimilarity = dot/magTotal
 
         returnDic[weightedVector] = cosineSimilarity
-        print("cosineSimilarity of Document " + weightedVector + ":")
-        print(cosineSimilarity)
-        print("")
+        # print("cosineSimilarity of Document " + weightedVector + ":")
+        # print(cosineSimilarity)
+        # print("")
     
     sortedDocs = sorted(returnDic.items(), key=operator.itemgetter(1))
     return sortedDocs
