@@ -1,5 +1,5 @@
 import search as CustomSearch
 
-sortedDocs = CustomSearch.search("computer system program")
+sortedDocs = CustomSearch.search("coter system program")
 for x in sortedDocs:
-    print(x[1])
+    print(x[0])

@@ -1,4 +1,4 @@
-import invert, DocumentStruct, timeit, math
+import invert, DocumentStruct, timeit, math, operator
 from PorterStemmer import *
 
 #---------------------- helper functions ---------------------
@@ -46,9 +46,17 @@ def search(input):
     ws={}
 
     # create doc list that has a least one query word
+    removelist=[]
     for x, word in enumerate(inputWords):
-        for doc in postingsList[word]:
-            docs.append(doc)
+        try:
+            print(word)
+            for doc in postingsList[word]:
+                docs.append(doc)
+        except:
+            print("ERROR ON LINE 51 of search.py: key did not match a word in posting list")
+            removelist.append(word)
+    for word in removelist:    
+        inputWords.remove(str(word))
     docs = unique(docs)
 
     # create word bank
@@ -122,7 +130,6 @@ def search(input):
         print(cosineSimilarity)
         print("")
     
-    import operator
     sortedDocs = sorted(returnDic.items(), key=operator.itemgetter(1))
     return sortedDocs
     
